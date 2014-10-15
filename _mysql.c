@@ -26,6 +26,13 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 */
 
+#if defined(MS_WINDOWS)
+#include <config-win.h>
+#else
+#include "my_config.h"
+#endif
+#include "mysql.h"
+#include "mysqld_error.h"
 #include "Python.h"
 #if PY_MAJOR_VERSION >= 3
 #define IS_PY3K
@@ -38,13 +45,6 @@ PERFORMANCE OF THIS SOFTWARE.
 #endif
 #include "pymemcompat.h"
 #include "structmember.h"
-#if defined(MS_WINDOWS)
-#include <config-win.h>
-#else
-#include "my_config.h"
-#endif
-#include "mysql.h"
-#include "mysqld_error.h"
 #include "errmsg.h"
 
 #if PY_VERSION_HEX < 0x02020000
